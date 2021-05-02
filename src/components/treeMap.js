@@ -11,7 +11,7 @@ const STreeMapTitle = styled.div`
 `;
 
 const STreeMapAreaContainer = styled.div`
-  width: 100%;
+  width: 1000px;
   height: 800px;
   border: blue 1px solid;
 `;
@@ -23,16 +23,17 @@ const STreeMapRow = styled.div`
 `;
 
 const STreeMapItem = styled.div`
-  font-size: 20px;
+  font-size: 1em;
   flex: 0 0 ${(props) => props.calWeight}%;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: ${(props) => (props.isGreen > 0 ? "green" : "red")};
+  display: flex;
 `;
 
 const STreeMapItemContent = styled.div`
-  margin: 10px 0;
+  word-break: break-all;
 `;
 
 const TreeMapRow = ({ item, firstRowWeight, renderRowsLength }) => {
@@ -47,8 +48,11 @@ const TreeMapRow = ({ item, firstRowWeight, renderRowsLength }) => {
             isGreen={percent > 0}
             key={`tree-map-item-${i}`}
           >
-            <STreeMapItemContent>{val.name}</STreeMapItemContent>
-            <STreeMapItemContent>{percent}%</STreeMapItemContent>
+            <STreeMapItemContent>
+              {val.name}
+              <br />
+              {percent}%
+            </STreeMapItemContent>
           </STreeMapItem>
         );
       })}
