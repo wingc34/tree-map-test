@@ -59,7 +59,7 @@ const TreeMapRow = ({ item, firstRowWeight, renderRowsLength }) => {
             <STreeMapItemContent>
               {val.name}
               <br />
-              {percent}%
+              {Math.round(percent * 100) / 100}%
             </STreeMapItemContent>
           </STreeMapItem>
         );
