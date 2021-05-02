@@ -19,17 +19,23 @@ const useApp = () => {
       setErrMsg("Please enter a json that length within 50.");
       return false;
     }
-    parsedJson.forEach((item) => {
-      if (item.name.length > 50) {
+    for (let i = 0; i < parsedJson.length; i++) {
+      if (parsedJson[i].name.length > 50) {
         setErrMsg("Please enter each item name less than 50 characters.");
-      } else if (typeof item.name !== "string") {
+        break;
+      } else if (typeof parsedJson[i].name !== "string") {
         setErrMsg("Please enter each item name in string.");
-      } else if (!Number.isInteger(item.weight) || item.weight <= 0) {
+        break;
+      } else if (
+        !Number.isInteger(parsedJson[i].weight) ||
+        parsedJson[i].weight <= 0
+      ) {
         setErrMsg("Please enter each item weight in integer.");
+        break;
       } else {
         setErrMsg("");
       }
-    });
+    }
     return parsedJson.every(
       (item) =>
         item.name.length <= 50 &&
