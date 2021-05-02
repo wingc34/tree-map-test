@@ -24,7 +24,7 @@ const useApp = () => {
         setErrMsg("Please enter each item name less than 50 characters.");
       } else if (typeof item.name !== "string") {
         setErrMsg("Please enter each item name in string.");
-      } else if (!Number.isInteger(item.weight)) {
+      } else if (!Number.isInteger(item.weight) || item.weight <= 0) {
         setErrMsg("Please enter each item weight in integer.");
       } else {
         setErrMsg("");
@@ -68,23 +68,20 @@ const useApp = () => {
         .sort(propComparator("weight"))
         .reverse();
 
-      console.log("sortedRenderItems", sortedRenderItems);
-
       let finalRenderItems = [];
       for (let i = 0; i < rowNum; i++) {
         finalRenderItems.push([]);
       }
-      console.log("finalRenderItems", finalRenderItems);
 
       let i = 0;
       sortedRenderItems.forEach((sortedItem) => {
         finalRenderItems[i].push(sortedItem);
         if (i + 1 < rowNum) {
           i++;
-        } else if (i - 1 === rowNum) {
-          i = 1;
-        } else {
+        } else if (i <= Math.floor(sortedRenderItems.length / 2)) {
           i = 0;
+        } else {
+          i = 1;
         }
       });
 
@@ -110,7 +107,6 @@ const useApp = () => {
         const isValid =
           jsonChecking(parsedJson) && rowNumChecking(parsedJson.length);
         if (isValid) {
-          console.log("all valid");
           setRenderRows(getRenderRows(parsedJson, rowNum));
         }
       }
