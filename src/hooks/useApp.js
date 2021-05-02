@@ -84,10 +84,13 @@ const useApp = () => {
         finalRenderItems[i].push(sortedItem);
         if (i + 1 < rowNum) {
           i++;
-        } else if (i <= Math.floor(sortedRenderItems.length / 2)) {
-          i = 0;
-        } else {
+        } else if (
+          i <= Math.floor(sortedRenderItems.length / 2) &&
+          rowNum !== 1
+        ) {
           i = 1;
+        } else {
+          i = 0;
         }
       });
 
