@@ -15,7 +15,7 @@ const STreeMapTitle = styled.div`
 `;
 
 const STreeMapAreaContainer = styled.div`
-  width: 1000px;
+  width: 100%;
   height: 800px;
   border: blue 1px solid;
   @media only screen and (max-width: 1000px) {
@@ -31,8 +31,8 @@ const STreeMapRow = styled.div`
 `;
 
 const STreeMapItem = styled.div`
-  font-size: 1em;
-  flex: 0 0 ${(props) => props.calWeight}%;
+  font-size: 1vw;
+  width: ${(props) => props.calWeight}%;
   justify-content: center;
   align-items: center;
   text-align: center;

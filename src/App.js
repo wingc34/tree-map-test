@@ -4,7 +4,6 @@ import TreeMap from "./components/treeMap";
 import useApp from "./hooks/useApp";
 
 const SAppContainer = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
 
