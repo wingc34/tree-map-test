@@ -49,7 +49,7 @@ const TreeMapRow = ({ item, firstRowWeight, renderRowsLength }) => {
     <STreeMapRow calHeight={(1 / renderRowsLength) * 100}>
       {item.map((val, i) => {
         const percent = val.value * 100;
-        const calWeight = ((val.weight / firstRowWeight) * 100).toFixed(1);
+        const calWeight = ((val.weight / firstRowWeight) * 100).toFixed(2);
         return (
           <STreeMapItem
             calWeight={calWeight}
