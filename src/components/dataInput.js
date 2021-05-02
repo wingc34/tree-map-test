@@ -10,7 +10,6 @@ const SJsonInputContainer = styled.div`
 `;
 
 const SJsonInputTitle = styled.div`
-  /* color: #fff; */
   font-size: 20px;
 `;
 
@@ -30,6 +29,11 @@ const SGenarateBtn = styled.button`
   font-size: 18px;
 `;
 
+const SPrettifyBtn = styled.button`
+  margin: 15px 0 0 15px;
+  font-size: 18px;
+`;
+
 const SErrorMsg = styled.div`
   margin-top: 15px;
   color: red;
@@ -42,6 +46,7 @@ const DataInput = ({
   onJsonChange,
   onRowNumChange,
   onButtonClick,
+  onPrettifyJsonClick,
 }) => {
   return (
     <SDataInputContainer>
@@ -54,6 +59,7 @@ const DataInput = ({
         <SRowInput value={rowNum} onChange={onRowNumChange} />
       </SRowInputContainer>
       <SGenarateBtn onClick={onButtonClick}>Generate Tree Map</SGenarateBtn>
+      <SPrettifyBtn onClick={onPrettifyJsonClick}>Prettify Json</SPrettifyBtn>
       <SErrorMsg>{errMsg}</SErrorMsg>
     </SDataInputContainer>
   );

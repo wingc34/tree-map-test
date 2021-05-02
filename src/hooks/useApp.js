@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 
 const useApp = () => {
   const [json, setJson] = useState("");
-  const [rowNum, setRowNum] = useState(0);
+  const [rowNum, setRowNum] = useState(1);
   const [errMsg, setErrMsg] = useState("");
   const [renderRows, setRenderRows] = useState([]);
   const [firstRowWeight, setfirstRowWeight] = useState(0);
@@ -14,7 +14,7 @@ const useApp = () => {
     setRowNum(e.target.value);
   };
 
-  const jsonChecking = (parsedJson) => {
+  const jsonChecking = useCallback((parsedJson) => {
     if (parsedJson.length > 50) {
       setErrMsg("Please enter a json that length within 50.");
       return false;
@@ -36,12 +36,12 @@ const useApp = () => {
         typeof item.name === "string" &&
         Number.isInteger(item.weight)
     );
-  };
+  }, []);
 
   const rowNumChecking = useCallback(
     (jsonLength) => {
       const newRowNum = parseInt(rowNum);
-      if (typeof newRowNum !== "number" && !Number.isInteger(newRowNum)) {
+      if (!Number.isInteger(newRowNum)) {
         setErrMsg("Please enter row number in integer");
         return false;
       } else if (newRowNum > jsonLength || newRowNum <= 0) {
@@ -81,6 +81,8 @@ const useApp = () => {
         finalRenderItems[i].push(sortedItem);
         if (i + 1 < rowNum) {
           i++;
+        } else if (i - 1 === rowNum) {
+          i = 1;
         } else {
           i = 0;
         }
@@ -116,17 +118,24 @@ const useApp = () => {
       console.log(`err`, err);
       setErrMsg("Please enter a valid JSON.");
     }
-  }, [getRenderRows, json, rowNum, rowNumChecking]);
+  }, [getRenderRows, json, jsonChecking, rowNum, rowNumChecking]);
+
+  const onPrettifyJsonClick = useCallback(() => {
+    const parsedJson = JSON.parse(json);
+
+    setJson(JSON.stringify(parsedJson, undefined, 4));
+  }, [json]);
 
   return {
     json,
     rowNum,
     errMsg,
+    renderRows,
+    firstRowWeight,
     onJsonChange,
     onRowNumChange,
     onButtonClick,
-    renderRows,
-    firstRowWeight,
+    onPrettifyJsonClick,
   };
 };
 

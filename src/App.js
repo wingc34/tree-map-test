@@ -14,11 +14,12 @@ function App() {
     json,
     rowNum,
     errMsg,
+    renderRows,
+    firstRowWeight,
     onJsonChange,
     onRowNumChange,
     onButtonClick,
-    renderRows,
-    firstRowWeight,
+    onPrettifyJsonClick,
   } = useApp();
 
   return (
@@ -30,6 +31,7 @@ function App() {
         onJsonChange={onJsonChange}
         onRowNumChange={onRowNumChange}
         onButtonClick={onButtonClick}
+        onPrettifyJsonClick={onPrettifyJsonClick}
       />
       <TreeMap renderRows={renderRows} firstRowWeight={firstRowWeight} />
     </SAppContainer>
