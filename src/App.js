@@ -7,6 +7,10 @@ const SAppContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 function App() {

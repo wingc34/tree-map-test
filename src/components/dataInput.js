@@ -3,6 +3,9 @@ import styled from "styled-components/macro";
 
 const SDataInputContainer = styled.div`
   width: 50%;
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 const SJsonInputContainer = styled.div`
@@ -52,7 +55,7 @@ const DataInput = ({
     <SDataInputContainer>
       <SJsonInputContainer>
         <SJsonInputTitle>Please enter your Data Json: </SJsonInputTitle>
-        <SJsonInput rows="30" cols="50" value={json} onChange={onJsonChange} />
+        <SJsonInput rows="30" cols="40" value={json} onChange={onJsonChange} />
       </SJsonInputContainer>
       <SRowInputContainer>
         <SRowInputTitle>Please enter row number: </SRowInputTitle>

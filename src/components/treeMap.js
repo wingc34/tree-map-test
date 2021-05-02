@@ -4,6 +4,10 @@ import styled from "styled-components/macro";
 const STreeMapContainer = styled.div`
   width: 100%;
   margin-left: 50px;
+
+  @media only screen and (max-width: 1000px) {
+    margin-left: 0px;
+  }
 `;
 
 const STreeMapTitle = styled.div`
@@ -14,6 +18,10 @@ const STreeMapAreaContainer = styled.div`
   width: 1000px;
   height: 800px;
   border: blue 1px solid;
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+    height: 400px;
+  }
 `;
 
 const STreeMapRow = styled.div`
